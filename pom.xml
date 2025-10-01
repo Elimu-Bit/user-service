@@ -16,6 +16,7 @@
 
 	<properties>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
+        <flyway.version>10.20.0</flyway.version>
 	</properties>
 
 	<dependencies>
@@ -39,10 +40,12 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-database-postgresql</artifactId>
+            <version>${flyway.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -114,6 +117,17 @@
 					</excludes>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>${flyway.version}</version>
+                <configuration>
+                    <url> jdbc:postgresql://localhost:5432/user_service_db</url>
+                    <user>vicky</user>
+                    <password>Capricon005$</password>
+                    <driver>org.postgresql.Driver</driver>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
